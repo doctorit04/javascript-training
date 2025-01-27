@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator</title>
+</head>
+<body>
+    <h1>Date and Time in JavaScript</h1>
+    <script>
+      /** Operator in JavaScript */
+      console.log("that fire!!");
+
+        //Arithmetic Operator
+        var a = 10;
+        var b = 20;
+
+        //addition
+        var c = a + b;
+        console.log("addition -->", c);
+
+        //subtraction
+        var d = a - b;
+        console.log("subtraction -->", d);
+
+        //multiplication
+        var e = a * b;
+        console.log("multiplication -->", e);
+
+        //division
+        var f = a / b;
+        console.log("division -->", f);
+
+        //modulus
+        var g = a % b;
+        console.log("modulus -->", g);
+
+        //increment
+        var x = a;
+        x = a+1;
+        console.log("increment a-->", ++a);
+        console.log("increment x-->", x);
+
+        //decrement
+        console.log("decrement -->", --b);
+
+        //Assignment Operator
+        var h = 10;
+        var i = 20;
+
+        //addition
+        h += i;
+        console.log("addition h-->", h);
+
+        //subtraction
+        h -= i;
+        console.log("subtraction h-->", h);
+
+        //multiplication
+        h *= i;
+        console.log("multiplication h-->", h);
+
+        //division
+        h /= i;
+        console.log("division h-->", h);
+
+        //modulus
+        h %= i;
+        console.log("modulus h-->", h);
+
+        //Comparison Operator
+        var j = 10;
+        var k = 20;
+
+        //equal to
+        console.log(`${j} equal to ${k}-->`, j == k);
+
+        //not equal to
+        console.log(`${j} not equal to ${k}-->`, j != k);
+
+        //greater than
+        console.log(`${j} greater than ${k}-->`, j > k);
+
+        //less than
+        console.log(`${j} less than ${k}-->`, j < k);
+
+        //greater than or equal to
+        console.log(`${j} greater than or equal to ${k}-->`, j >= k);
+
+        //less than or equal to
+        console.log(`${j} less than or equal to ${k}-->`, j <= k);
+
+        //Logical Operator
+        var l = 10;
+        var m = 20;
+
+        //AND
+        var n = (l > 5) && (l > m);
+        console.log(`${l} AND ${m}-->  (l > 5) && (l > m)`, n);
+
+        //OR
+        var o = (l > 5) || (l > m);
+        console.log(`${l} OR ${m}-->  (l > 5) || (l > m)`, o);
+
+        //NOT
+        var p = !(l > m);
+        console.log(`${l} NOT ${m}-->  !(l > m)`, p);
+
+        //Conditional Operator
+        var q = 10;
+        var r = 20;
+
+        //ternary operator
+        //condition ? expression1 : expression2
+        var s = (q > r) ? `${q} is greater than ${r}` : `${r} is greater than ${q}`;
+        console.log("ternary operator-->", s);
+
+        //typeof operator
+        var t = 10;
+        var u = "hello";
+        var v = true;
+        var w = null;
+        var x = undefined;
+        var y = [1, 2, 3];
+        var z = {name: "John", age: 30};
+
+        console.log("typeof t-->", typeof t);
+        console.log("typeof u-->", typeof u);
+        console.log("typeof v-->", typeof v);
+        console.log("typeof w-->", typeof w);
+        console.log("typeof x-->", typeof x);
+        console.log("typeof y-->", typeof y);
+        console.log("typeof z-->", typeof z);
+
+        //instanceof operator
+        var aa = new Date();
+        var zz = new Date();
+        var bb = [1, 2, 3];
+
+        console.log("aa instanceof Date-->", aa instanceof Date);
+        console.log("bb instanceof Date-->", bb instanceof Date);
+
+    </script>
+</body>
+</html>
