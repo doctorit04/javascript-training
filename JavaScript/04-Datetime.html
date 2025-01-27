@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Date and Time in JavaScript</h1>
+    <script>
+      /** Date and Time in JavaScript */
+      console.log("that fire!!");
+
+      //get current date time
+      var currentDateTime = new Date();
+      console.log("Today date time is -->", currentDateTime); //output - Mon Dec 09 2024 20:32:10 GMT+0700 (Indochina Time)
+
+      //get date/get UTC date
+      var today = currentDateTime.getDate();
+      var todayUTC = currentDateTime.getUTCDate();
+      console.log("today is -->", today);
+      console.log("todayUTC is -->", todayUTC);
+
+      //get month/get UTC month
+      var currentMonth = currentDateTime.getMonth();
+      var currentUTCMonth = currentDateTime.getUTCMonth();
+      console.log("currentMonth is -->", currentMonth);
+      console.log("currentUTCMonth is -->", currentUTCMonth);
+
+      //get year/get UTC year
+      var currentYear = currentDateTime.getFullYear();
+      var currentUTCYear = currentDateTime.getUTCFullYear();
+      console.log("currentYear is -->", currentYear);
+      console.log("currentUTCYear is -->", currentUTCYear);
+
+      //get hour/get UTC hour
+      var currentHour = currentDateTime.getHours();
+      var currentUTCHour = currentDateTime.getUTCHours();
+      console.log("currentHour is -->", currentHour);
+      console.log("currentUTCHour is -->", currentUTCHour);
+
+      //get minute/get UTC minute
+      var currentMinute = currentDateTime.getMinutes();
+      var currentUTCMinute = currentDateTime.getUTCMinutes();
+      console.log("currentMinute is -->", currentMinute);
+      console.log("currentUTCMinute is -->", currentUTCMinute);
+
+      //get second/get UTC second
+      var currentSecond = currentDateTime.getSeconds();
+      var currentUTCSecond = currentDateTime.getUTCSeconds();
+      console.log("currentSecond is -->", currentSecond);
+      console.log("currentUTCSecond is -->", currentUTCSecond);
+      
+      //get millisecond/get UTC millisecond
+      var currentMilliSecond = currentDateTime.getMilliseconds();
+      var currentUTCMilliSecond = currentDateTime.getUTCMilliseconds();
+      console.log("currentMilliSecond is -->", currentMilliSecond);
+      console.log("currentUTCMilliSecond is -->", currentUTCMilliSecond);
+
+      //get day/get UTC day
+      var currentDay = currentDateTime.getDay();
+      var currentUTCDay = currentDateTime.getUTCDay();
+      console.log("currentDay is -->", currentDay);
+      console.log("currentUTCDay is -->", currentUTCDay);
+
+      //get unix timestamp
+      var currentTime = currentDateTime.getTime(); //millisecond start from
+      var currentTimeStamp = currentTime / 1000; //second
+      console.log("currentTime is -->", currentTime);
+      console.log("currentTimeStamp is -->", currentTimeStamp);
+
+      /** Date format **/
+      //toDateString() Method
+      var toDateString = currentDateTime.toDateString();
+      console.log("toDateString is -->", toDateString);
+
+      //toISOString() Method
+      var toISOString = currentDateTime.toISOString();
+      console.log("toISOString is -->", toISOString);
+
+      //toLocaleDateString() Method
+      var toLocaleDateString = currentDateTime.toLocaleDateString();
+      console.log("toLocaleDateString is -->", toLocaleDateString);
+
+      var toLocaleDateStringTH = currentDateTime.toLocaleDateString("th-TH");
+      console.log("toLocaleDateStringTH is -->", toLocaleDateStringTH);
+
+      var toLocaleDateStringUS = currentDateTime.toLocaleDateString("us-US");
+      console.log("toLocaleDateStringUS is -->", toLocaleDateStringUS);
+
+      var toLocaleDateStringGB = currentDateTime.toLocaleDateString("gb-GB");
+      console.log("toLocaleDateStringGB is -->", toLocaleDateStringGB);
+
+      var toLocaleDateStringCH = currentDateTime.toLocaleDateString("ch-CH");
+      console.log("toLocaleDateStringCH is -->", toLocaleDateStringCH);
+
+      //Intl.DateTimeFormat() Method
+      const usFormatterLong = new Intl.DateTimeFormat("en-US", { dateStyle:"long"});
+      var usFormatDateLong = usFormatterLong.format(currentDateTime)
+      console.log("usFormatDateLong is -->", usFormatDateLong);
+
+      const usFormatterShort = new Intl.DateTimeFormat("en-US", { dateStyle:"short"});
+      var usFormatDateShort = usFormatterShort.format(currentDateTime)
+      console.log("usFormatDateShort is -->", usFormatDateShort);
+
+
+      const thFormatterLong = new Intl.DateTimeFormat("th-TH", { dateStyle:"long"});
+      var thFormatDateLong = thFormatterLong.format(currentDateTime)
+      console.log("thFormatDateLong is -->", thFormatDateLong);
+
+      const thFormatterShort = new Intl.DateTimeFormat("th-TH", { dateStyle:"short"});
+      var thFormatDateShort = thFormatterShort.format(currentDateTime)
+      console.log("thFormatDateShort is -->", thFormatDateShort);
+
+
+      //Set date value
+      //print expiry date 7 days
+      const expireDate = 7;
+
+      //set date, find expire date from current date 
+      var newExpireDate = currentDateTime.getDate() + expireDate;
+      currentDateTime.setDate(newExpireDate);
+      var expireDateLong = thFormatterLong.format(currentDateTime)
+      console.log("expireDateLong is -->", expireDateLong);
+
+      //set date, find expire date from database like frozen data
+      const dateFromDatabase = "2024-12-07 21:40:55"; //register date
+      var newDatabaseDate = new Date(dateFromDatabase);
+      console.log("newDatabaseDate is -->", newDatabaseDate);
+
+      var newExpireDateByDatabase = newDatabaseDate.getDate() + expireDate;
+      currentDateTime.setDate(newExpireDateByDatabase); //today
+
+      var expireDateLongByDatabase = thFormatterLong.format(currentDateTime)
+      console.log("expireDateLongByDatabase is -->", expireDateLongByDatabase);
+
+
+      //display AM/PM
+      var formatter = new Intl.DateTimeFormat("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+      });
+      var formattedDate = formatter.format(currentDateTime);
+      console.log("formattedDate is -->", formattedDate);
+
+
+      const dateFromDatabase2 = "2024-12-07 09:40:55"; //register date
+      var newDatabaseDate2 = new Date(dateFromDatabase2);
+      var formatter2 = new Intl.DateTimeFormat("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+      });
+      var formattedDate2 = formatter2.format(newDatabaseDate2);
+      console.log("formattedDate2 is -->", formattedDate2);
+
+
+      //date time library, Moment.js (Legacy project), day.js
+
+    </script>
+  </body>
+</html>

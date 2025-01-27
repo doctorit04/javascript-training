@@ -1,0 +1,41 @@
+body {
+    font-size: 16px;
+    color: #333333;
+}
+
+h1 {
+    color: blue;
+}
+
+label, legend {
+    font-weight: bold;
+}
+
+input, select {
+    background-color: aliceblue;
+    border: 1px solid #eaeaea;
+    font-size: 16px;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    background-color: burlywood;
+    border-radius: 4px;
+    border: 1px solid #deb59f;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(217, 160, 87);
+    font-weight: bold;
+}
+
+button:active {
+    background-color: rgb(247, 135, 30);
+    font-weight: bold;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    accent-color: burlywood;
+}

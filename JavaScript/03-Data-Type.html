@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Type</title>
+</head>
+<body>
+    <script>
+        //Declaration
+
+        /** Data Type **/
+        //1. Primitive data type
+        //1.1 Number
+
+        var itemCount = 10;
+        var items = 100;
+
+        if(itemCount >= 10) {
+            items *= 10;
+            items = items * 10;
+        }
+
+        console.log("items -->", items)
+        items = "stored a string"
+
+        console.log("itemCount -->", itemCount)
+        console.log("items -->", items)
+
+        //-- floating point
+        var itemPrice = 10.34;
+        var quantity = 2;
+        var totalPrice = itemPrice * quantity;
+        console.log("totalPrice -->", totalPrice)
+
+        /** 
+        Circle formula
+        เส้นรอบวง = 2 x PI x R
+        พื้นที่  = PI x R^2
+        */
+        const PI = 3.14159265359;
+        console.log("PI -> ", PI)
+
+
+        var r = 40;
+        var circumference = 2 * PI * r;
+        var area = PI * r * r;
+
+        console.log("circumference -> ", circumference) //output - 251.3274122872
+        console.log("area -> ", area) //output - 5026.548245743999
+
+        //number precision .toFixed()
+        console.log("circumference with toFixed -> ", circumference.toFixed(2)) //output - 251.33
+        console.log("area with toFixed -> ", area.toFixed(2)) //output - 5026.55
+
+        //math lib pow()
+        var area2 = PI * Math.pow(r,2);
+        console.log("area2 with toFixed -> ", area2.toFixed(2)) //output - 5026.55
+
+        const PI2 = Math.PI;
+        console.log("PI2 -> ", PI2) //3.141592653589793
+
+        var randNumber = Math.random();
+        console.log("randNumber -> ", randNumber)
+
+        var newRandom = Math.random() * 100;
+        var intNumber = Math.floor(newRandom);
+        console.log("intNumber -> ", intNumber)
+
+
+        //1.1 String
+        var myString1 = "Hello JavaScript";
+        var myString2 = 'Hello JavaScript';
+        var myString3 = `Hello JavaScript`;
+
+        console.log("myString1 -> ", myString1)
+        console.log("myString2 -> ", myString2)
+        console.log("myString3 -> ", myString3)
+
+        //concat string
+        var stringWithVariable1 = myString1 + intNumber;
+        console.log("stringWithVariable1 -> ", stringWithVariable1)
+
+        //template string
+        var stringWithVariable2 = `${myString1} ${intNumber}`; 
+        console.log("stringWithVariable2 -> ", stringWithVariable2)
+
+        //template string
+        var stringWithVariable3 = `${myString1} with random: ${intNumber}`;
+        console.log("stringWithVariable3 -> ", stringWithVariable3)
+
+
+        var circle = "Pi is a mathematical constant that represents the ratio of a circle's circumference to its diameter";
+        var stringLength = circle.length;
+        console.log("circle string length -> ", stringLength) //output - 99
+
+        // find string if found return position number, otherwise return -1 
+        var findString = "ratio"
+        var found = circle.search(findString);
+        console.log(`find string ${findString} result: -> `, found) 
+
+        //find and replace string
+        var replaceString = "my replaced string";
+        var newCircle = circle.replace(findString, replaceString);
+        console.log(`find string ${findString} and replace with ${replaceString} result: -> `, newCircle) 
+
+        
+        var monthString = "1,2,3,4,5,6,7,8,9,10,11,12";
+        console.log("monthString -->", monthString)
+
+        //split string
+        var monthSplit = monthString.split(",");
+        console.log("monthSplit -->", monthSplit) //output is Array
+        console.log("monthSplit length -->", monthSplit.length) //output - 12
+
+        var firstSplit = monthSplit[0];
+        console.log("firstSplit -->", firstSplit)
+
+        //string pad left
+        var padLeft = firstSplit.padStart(3,'0') //001
+        console.log("padLeft -->", padLeft)
+        var customerCode = `A${padLeft}`;
+        console.log("customerCode -->", customerCode)
+
+        //.toString()
+        var pi2String = PI2.toString();
+        console.log("pi2String -->", pi2String)
+
+        //convert from Number to String and using split method
+        var piSplit = PI.toString().split(".");
+        console.log("piSplit -->", piSplit)
+
+        var piSplit1 = piSplit[0];
+        var piSplit2 = piSplit[1];
+
+        console.log("type of PI -->", typeof PI)
+        console.log("type of piSplit -->", typeof piSplit)
+        console.log("type of piSplit1 -->", typeof piSplit1)
+        console.log("type of piSplit2 -->", typeof piSplit2)
+
+        //try to plus string
+        var sum = piSplit1 + piSplit2;
+        console.log("sum -->", sum)
+
+        //try to plus string with type conversion
+        var sum2 = parseInt(piSplit1) + parseInt(piSplit2);
+        console.log("sum2 -->", sum2)
+
+
+        //auto conversion
+        var unitPrice  = "3.14";
+        var qty = 10;
+        var subTotal = unitPrice * qty;
+        console.log("subTotal -->", subTotal)
+
+        //can't conversion display NaN
+        var unitPrice2 = "hello";
+        var qty2 = 10;
+        var subTotal2 = unitPrice2 * qty2;
+        console.log("subTotal2 -->", subTotal2)
+
+        //1.3 Boolean
+        var isNumber = true;
+        var isStudent = false;
+
+        //check NaN: เช็คว่าค่าไม่ใช่ตัวเลข
+        var myNumber = 10;
+        if(isNaN(myNumber) == false) {  //if(!isNaN(myNumber)
+            console.log("myNumber is number")
+        }
+        else 
+        {
+            console.log("myNumber is not a number")
+        }
+
+        var num1 = 5;
+        var num2 = 10;
+        var num3 = -3;
+
+        //short hand if/else
+        var isNum3GreaterThanNum2_way1 = num3 > num2 ? true : false;
+        var isNum3GreaterThanNum2_way2 = num3 > num2;
+
+        console.log("isNum3GreaterThanNum2_way1 -> ", isNum3GreaterThanNum2_way1)
+        console.log("isNum3GreaterThanNum2_way2 -> ", isNum3GreaterThanNum2_way2)
+        
+        //1.4 null
+        var nullable = null;
+        console.log("type of nullable", typeof nullable)
+        console.log("nullable", nullable)
+
+        //comparison null and empty
+        var empty = "";
+        var compareNullAndEmpty = nullable == empty;
+        console.log("compareNullAndEmpty result:", compareNullAndEmpty)
+
+        //1.5 undefine
+        var stock;  //type undefine
+        var total = unitPrice * stock; 
+        console.log("total --> ", total) //output - NaN
+
+        
+    </script>
+</body>
+</html>

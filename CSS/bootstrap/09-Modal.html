@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Modal</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        //function ตรวจสอบ DOM โหลดเสร็จหมดทั้งเพจ/หน้า
+        $(document).ready(function(){
+
+            $("#openModal").click(function(){
+                //alert("openModal was click!!")
+                $("#formMessage").val("This is initialize message here!!")
+                
+                $("#myModal").modal("show");
+                
+            });
+
+
+        });
+    </script>
+
+</head>
+  <body>
+    <div class="container border p-5">
+
+        <h1>
+            Activate Modals via Data Attributes
+        </h1>
+        <!-- Button HTML (to Trigger Modal) -->
+         <a href="" class="btn btn-lg btn-outline-warning" id="link_to_whatever" data-whatever="what_ever"> This is link</a>
+         <br/>
+
+        <a href="#myModal" class="btn btn-lg btn-primary" data-bs-toggle="modal"
+            >Launch Demo Modal</a
+        >
+
+        <div id="mydiv" style="display:none">
+            <h1>This is toggle div</h1>
+        </div>
+
+        <!-- Modal HTML -->
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmation</h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <h3>This is message</h3>
+                        <form>
+                            <label>Form</label>
+                            <input id="formMessage" type="text" class="form-control" />
+                        </form>
+                        <p>
+                            Do you want to save changes to this document before closing?
+                        </p>
+                        <p class="text-secondary">
+                            <small>If you don't save, your changes will be lost.</small>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Cancel
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+        <h1>Activate Modals via Javascript</h1>
+
+        <button
+            type="button"
+            class="btn btn-outline-warning"
+            id="openModal"
+            >
+                Open Modal
+        </button>
+
+
+    </div>
+
+  </body>
+</html>
