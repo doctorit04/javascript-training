@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Object Json</title>
+</head>
+<body>
+    <script>
+        //JavaScript Object
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 50,
+            eyeColor: "blue"
+        };
+
+
+        console.log(person);
+
+        //JSON stand for JavaScript Object Notation
+        var personJson = {
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": 50,
+            "eyeColor": "blue"
+        };
+
+        console.log(personJson);
+
+        //Convert JSON to JavaScript Object
+        var personObject = JSON.parse( '{"firstName":"John", "lastName":"Doe", "age":50, "eyeColor":"blue"}' );
+        console.log(personObject);
+
+
+        //Convert JavaScript Object to JSON
+        var personJson2 = JSON.stringify(person);
+        console.log(personJson2);
+
+
+
+        //function get student list
+        function getStudentList(){
+            var studentList = [
+                {
+                    "name": "John",
+                    "age": 20,
+                    "city": "New York"
+                },
+                {
+                    "name": "Doe",
+                    "age": 25,
+                    "city": "California"
+                },
+                {
+                    "name": "Smith",
+                    "age": 30,
+                    "city": "Texas"
+                }
+            ];
+
+            return studentList;
+        }
+
+        var studentList = getStudentList();
+        console.log('studentList -->', studentList);
+
+        //for each loop
+        studentList.forEach(function(student){
+            console.log('Name: ' + student.name + ', Age: ' + student.age + ', City: ' + student.city);
+        });
+
+        //for of loop
+        for(var student of studentList){
+            console.log('Name: ' + student.name + ', Age: ' + student.age + ', City: ' + student.city);
+        }   
+
+        //for in loop
+        for(var index in studentList){
+            console.log('Name: ' + studentList[index].name + ', Age: ' + studentList[index].age + ', City: ' + studentList[index].city);
+        }
+
+
+
+
+    </script>
+</body>
+</html>
