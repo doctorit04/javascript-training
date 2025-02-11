@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    <script>
+
+        //basic function
+        function sayHello(){
+            console.log("Hello World");
+        }
+
+        sayHello();
+
+        //function with parameter
+        function sayHelloTo(name){
+            console.log("Hello " + name);
+        }
+
+        sayHelloTo("Aeedy");
+
+
+        //function with return value
+        function sum(a, b){
+            return a + b;
+        }
+
+        console.log("Call sum function: ", sum(10, 20));
+
+
+        //function with multiple return value
+        function sumAndSub(a, b){
+            return [a + b, a - b];
+        }
+
+        var result = sumAndSub(10, 5);
+        console.log("Multiple return value of Sum: ", result);
+
+
+        //function with default parameter
+        function sayHelloDefaultParams(name = "Aeedy"){
+            console.log("Hello " + name);
+        }
+
+        sayHelloDefaultParams();
+        sayHelloDefaultParams("Abdul");
+
+
+        
+
+    </script>
+
+</body>
+</html>
