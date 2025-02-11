@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Loop</title>
+
+</head>
+<body>
+     <script>
+        // For loop
+        console.log("This is For loop");
+
+
+        // Array Declaration
+        var arr = [1, 2, 3, 4, 5];
+
+         
+        //counting array length
+        var count = arr.length;
+        console.log('count:', count);
+
+
+        // For loop
+        for (var i = 0; i < count; i++) {
+            console.log('Index:', i, 'Value:', arr[i]);
+        }   
+
+        //looping through array - forEach
+        arr.forEach(function (element, index, array) {
+            console.log('Element:', element, 'Index:', index, 'Value:', array[index]);
+        });
+
+        //looping through array - for of
+        for (var value of arr) {
+            console.log('Array value:', value);
+        }
+
+
+        //looping through array - หารสองลงตัว
+        for (var value of arr) {
+            if (value % 2 == 0) {
+                console.log('Array mod % 2 == 0:', value);
+            }   
+        }
+
+        //break statement
+        for (var value of arr) {
+            if (value == 3) {
+                console.log(`Break array value == ${value} :`, value);
+                break;
+            }
+            console.log('Array value:', value);
+        }
+
+
+     </script>
+</body>
+</html>
