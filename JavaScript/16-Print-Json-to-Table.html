@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Json to Table</title>
+    <script>
+
+        function getData() {
+
+            var arrayStudent = [];
+            for(var i=1; i<=10; i++) {
+                var student = {
+                    "id": i,
+                    "name": "John - " + i,
+                    "age": Math.floor(Math.random() * 100),
+                    "city": "New York - " + i
+                };
+
+                arrayStudent.push(student); // Add student to array, stack
+            }
+
+            return arrayStudent;
+        }
+
+        function displayData() {
+
+            var studentData = getData();
+            console.log('studentData -->', studentData);
+
+            var tbl = "";
+            for (var i = 0; i < studentData.length; i++) {
+                tbl += 
+                ` <tr>
+                    <td style="text-align: center;">${studentData[i].id}</td>
+                    <td>${studentData[i].name}</td>
+                    <td style="text-align: right;">${studentData[i].age}</td>
+                    <td>${studentData[i].city}</td>
+                </tr>`;
+            }   
+
+            document.getElementById("studentList").innerHTML = tbl;
+        }
+
+        function displayDataForOf() {
+
+            var studentData = getData();
+            console.log('studentData -->', studentData);
+
+            var tbl = "";
+            for (var student of studentData) {
+                tbl += 
+                ` <tr>
+                    <td style="text-align: center;">${student.id}</td>
+                    <td>${student.name}</td>
+                    <td style="text-align: right;">${student.age}</td>
+                    <td>${student.city}</td>
+                </tr>`;
+            }   
+
+            document.getElementById("studentListForOf").innerHTML = tbl;
+        }
+
+        setTimeout(displayData, 1000);
+        setTimeout(displayDataForOf, 1000);
+    </script>
+</head>
+<body>
+    <h1>Student List</h1>
+    <table border="1" width="100%">
+        <thead style="background-color: #EAEAEA;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody id="studentList">
+        </tbody>    
+    </table>
+
+    <h1>Student List For of loop</h1>
+    <table border="1" width="100%">
+        <thead style="background-color: #EAEAEA;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody id="studentListForOf">
+        </tbody>    
+    </table>
+</body>
+</html>
