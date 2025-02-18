@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+
+    <!-- Additional libs -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
+    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+
+
+    <script src="js/HttpClient.js"></script>
+    <script>
+        
+        function loading() {
+            var countryList = document.getElementById('countryList');
+            var html = `<tr>
+                    <td colspan="6" style="text-align: center;"><img src="img/loading.gif"/></td>
+                </tr>`;
+
+            countryList.innerHTML = html;
+        }
+
+        function displayData(allCountries) {
+            console.log(allCountries);
+
+            var countryList = document.getElementById('countryList');
+            var html = "";
+            allCountries.forEach(country => {
+                html += `<tr>
+                    <td>${country.name.common}</td>
+                    <td>${country.cca2}</td>
+                    <td>${country.cca3}</td>
+                    <td>${country.capital}</td>
+                    <td>${country.region}</td>
+                    <td><img src="${country.flags.png}" width="50" height="30"/></td>
+                </tr>`;
+            });
+
+            countryList.innerHTML = html;
+        }
+
+        async function getAllCountries() {
+
+            //destroy data table
+            //$('#example').DataTable().destroy();
+
+            //show loading
+            loading();
+
+            //fetch data
+            const url = "https://restcountries.com/v3.1/all";
+            const allCountries = await getData(url);
+            
+            //display data
+            displayData(allCountries);
+
+
+            //Data Table
+            //$('#example').DataTable().clear().destroy(); //clear and destroy
+
+            //$('#example').DataTable({ searching: false, paging: false});  //reinitialize
+            $('#example').DataTable();  //reinitialize
+            
+        }
+
+
+    </script>
+</head>
+<body>
+    <h1>Display Country to Data Table</h1>
+    <button onclick="getAllCountries()" style="background-color: aqua; padding: 10px 10px; font-weight:bold;">Get All Country</button>
+    <table id="example" class="display" style="width:100%" >
+        <thead style="background-color: #EAEAEA;">
+            <tr>
+                <th>Name</th>
+                <th>CCA2</th>
+                <th>CCA3</th>
+                <th>Capital</th>
+                <th>Region</th>
+                <th>Flags</th>
+            </tr>
+        </thead>
+        <tbody id="countryList">
+            <tr>
+                <td colspan="6" style="text-align: center;">No data found</td>
+            </tr>
+        </tbody>    
+    </table>
+</body>
+</html>
