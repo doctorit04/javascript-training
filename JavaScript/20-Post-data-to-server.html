@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Data to Server</title>
+    <script>
+        function PostData() {
+            var data = {
+                name: "John Doe",
+                city: "Bangkok",
+                age: 18
+            };
+
+            var url = "http://localhost:3001/students";
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+            
+            const requestOptions = {
+              method: "POST",
+              headers: myHeaders,
+              body: JSON.stringify(data),
+              redirect: "follow"
+            };
+            
+            fetch(url, requestOptions)
+              .then((response) => response.text())
+              .then((result) => console.log(result))
+              .catch((error) => console.error(error));
+
+        }
+    </script>
+</head>
+<body>
+    
+    <h1>Post Data to Rest API</h1>
+    <button onclick="PostData()" style="background-color: aqua; padding: 10px 10px; font-weight:bold;">Post Data</button>
+
+</body>
+</html>
