@@ -35,16 +35,19 @@ app.get('/info', function (req, res) {
 app.get('/students', function (req, res) { 
     var studentList = [
         {
+            "id": 1,
             "name": "John",
             "age": 20,
             "city": "New York"
         },
         {
+            "id": 2,
             "name": "Doe",
             "age": 25,
             "city": "California"
         },
         {
+            "id": 3,
             "name": "Smith",
             "age": 30,
             "city": "Texas"
@@ -90,6 +93,51 @@ app.post('/students', function (req, res) {
     res.json(studentList);
 });
 
+
+app.delete('/students/:id', function (req, res) {
+
+    console.log(req.params.id);
+    var studentList = [
+        {
+            "id": 1,
+            "name": "John",
+            "age": 20,
+            "city": "New York"
+        },
+        {
+            "id": 2,
+            "name": "Doe",
+            "age": 25,
+            "city": "California"
+        },
+        {
+            "id": 3,
+            "name": "Smith",
+            "age": 30,
+            "city": "Texas"
+        }
+    ];
+
+    //get id from url
+    var id = req.params.id;
+
+    //find index by student id
+    var index = studentList.findIndex(student => student.id == id);
+
+    //if not found return message
+    if(index == -1){
+        return res.status(404).json({message: "No student found"});
+    }   
+
+    //filter student from list except the student to be deleted
+    studentList = studentList.filter(student => student.id != id);
+    
+    console.log(studentList);
+
+    //return updated list
+    res.json(studentList);
+
+});
 
 app.listen(3001);
 console.log('Rest API running at http://localhost:3001/');

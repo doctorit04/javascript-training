@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get data from Localhost</title>
+    <script>
+
+        async function getData() {
+            const url = 'http://localhost:3001/students';
+            try {
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                  throw new Error(`Response status: ${response.status}`);
+                }
+            
+                const json = await response.json();
+                return json;
+
+              } catch (error) {
+                console.error(error.message);
+              }
+
+        }
+
+        async function displayData() {
+            var studentData = await getData();
+            console.log('studentData -->', studentData);
+
+            var tbl = "";
+            for(var student of studentData) {
+                tbl += 
+                ` <tr>
+                    <td style="text-align: center;">${student.id}</td>
+                    <td>${student.name}</td>
+                    <td style="text-align: right;">${student.age}</td>
+                    <td>${student.city}</td>
+                </tr>`;
+            }    
+
+            document.getElementById("studentList").innerHTML = tbl;
+        }
+
+        //call function
+        displayData();
+
+
+    </script>
+</head>
+<body>
+    <h1>Get student from Localhost API</h1>
+    <table border="1" width="100%">
+        <thead style="background-color: #EAEAEA;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody id="studentList">
+        </tbody>    
+    </table>
+</body>
+</html>
