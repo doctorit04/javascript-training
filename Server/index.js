@@ -144,6 +144,7 @@ app.delete('/students/:id', function (req, res) {
 
 
 //** Rest API from Database */
+//query all students
 app.get('/db/students', function (req, res) {
     try {
         //query all students
@@ -156,6 +157,28 @@ app.get('/db/students', function (req, res) {
     }
  });
 
+//query student by id
+ app.get('/db/students/:id', async function (req, res) {
+    try {
+        
+        const id = req.params.id;
+        const student = await Student.findByPk(id);
+
+        //check if student not found
+        if(student == null){
+            return res.status(404).json({message: "Student not found"});
+        }
+
+        //return student
+        res.json(student);
+    }
+    catch (error) {
+        res.status(500).json({ message: error });
+    }   
+ });
+
+
+//insert student
  app.post('/db/students', function (req, res) {
     try {
         //object student from request
@@ -172,6 +195,70 @@ app.get('/db/students', function (req, res) {
     }
  });
 
+
+ //update student
+app.put('/db/students/:id',async function (req, res) {
+
+    try {
+
+        //object student from request
+        const id = req.params.id;
+        var student = req.body;
+        console.log(student);
+
+        //check if student id is existed
+        const studentExisted = await Student.findByPk(id);
+
+        //check if student not found
+        if(studentExisted == null){
+            return res.status(404).json({message: "Student not found"});
+        }
+
+        //update student
+        Student.update(student, {
+            where: {
+                id: id
+            }
+        }).then(() => {
+            return res.json(student);
+        });
+
+    }
+    catch (error) {
+        res.status(500).json({ message: error });
+    }
+    
+ });
+
+
+ //delete student
+app.delete('/db/students/:id', async function (req, res) { 
+    try {
+        const id = req.params.id;
+
+        //check if student id is existed
+        const studentExisted = await Student.findByPk(id);
+
+        //check if student not found
+        if(studentExisted == null){
+            return res.status(404).json({message: "Student not found"});
+        }
+
+        //delete student
+        Student.destroy({
+            where: {
+                id: id
+            }
+        }).then(() => {
+            return res.json({message: "Student deleted"});
+        });
+
+    }
+    catch (error) {
+        res.status(500).json({ message: error });
+    }
+
+});
 
 
 app.listen(3001);
