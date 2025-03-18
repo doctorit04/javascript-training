@@ -252,6 +252,36 @@ const route = (app) => {
       
       });
       
+
+      //Login API
+      app.post('/login', async function (req, res) {
+          try {
+                //object user from request
+                var user = req.body;
+                console.log(user);  
+
+                //check if user is existed
+                const userExisted = await User.findOne({
+                    where: {
+                        username: user.username,
+                        password: user.password
+                    }
+                }); 
+
+                //check if user not found
+                if(userExisted == null){
+                    return res.status(404).json({message: "User not found"});
+                }
+
+                //return user
+                res.json(userExisted);
+          }
+          catch (error) {
+              res.status(500).json({ message: error });
+          }
+       });
+       
+       
 };
 
 module.exports = route;
