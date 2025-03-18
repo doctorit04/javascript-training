@@ -1,6 +1,7 @@
 
 //import student model
 const Student = require('./student.model');
+const User = require('./users.model');
 
 //arrow function
 const route = (app) => { 
