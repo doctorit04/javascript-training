@@ -4,6 +4,9 @@ const cors = require('cors')
 
 const app = express()
 
+//import student model
+const Student = require('./src/student.model');
+
 //config body-parser
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -138,6 +141,38 @@ app.delete('/students/:id', function (req, res) {
     res.json(studentList);
 
 });
+
+
+//** Rest API from Database */
+app.get('/db/students', function (req, res) {
+    try {
+        //query all students
+        Student.findAll().then(students => {
+            res.json(students);
+        });
+    }
+    catch (error) {
+        res.status(500).json({ message: error });
+    }
+ });
+
+ app.post('/db/students', function (req, res) {
+    try {
+        //object student from request
+        var student = req.body;
+        console.log(student);
+
+        //create student
+        Student.create(student).then(student => {
+            res.json(student);
+        });
+    }
+    catch (error) {
+        res.status(500).json({ message: error });
+    }
+ });
+
+
 
 app.listen(3001);
 console.log('Rest API running at http://localhost:3001/');
